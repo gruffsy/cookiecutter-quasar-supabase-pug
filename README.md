@@ -16,10 +16,5 @@ After downloading or cloning the directory:
 
 If the initial page is blank, go to localhost:3000/login
 
-Changes:
-1) Added MagicLink login option by https://github.com/nodescan-admin/Quasar-Supabase-E
-
-
-
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
