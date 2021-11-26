@@ -3,7 +3,7 @@
 An example Quasar app that connects to Supabase.io
 
 This project was cloned from https://github.com/tequila99/quasar-supabase
-and translated to English.
+and translated to English by https://github.com/nodescan-admin/Quasar-Supabase-E
 
 After downloading or cloning the directory:
 1) Type npm install or yarn install
@@ -17,7 +17,8 @@ After downloading or cloning the directory:
 If the initial page is blank, go to localhost:3000/login
 
 Changes:
-1) Added MagicLink login option
+1) Added MagicLink login option by https://github.com/nodescan-admin/Quasar-Supabase-E
+
 
 
 ### Customize the configuration
