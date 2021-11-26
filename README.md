@@ -1,26 +1,24 @@
 # Quasar App (cookiecutter-quasar-supabase-pug)
 
-A Quasar Framework app
+An example Quasar app that connects to Supabase.io
 
-## Install the dependencies
-```bash
-yarn
-```
+This project was cloned from https://github.com/tequila99/quasar-supabase
+and translated to English.
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+After downloading or cloning the directory:
+1) Type npm install or yarn install
+2) Create an '.env' file and add it to the top level dirctory with this content:
 
-### Lint the files
-```bash
-yarn run lint
-```
+  VITE_SUPABASE_URL=<URL_from_your_supabase_account><br/>
+  VITE_SUPABASE_ANON_KEY=<KEY_from_your_supabase_account>
 
-### Build the app for production
-```bash
-quasar build
-```
+3) Type quasar dev
+
+If the initial page is blank, go to localhost:3000/login
+
+Changes:
+1) Added MagicLink login option
+
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
