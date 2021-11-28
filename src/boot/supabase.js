@@ -19,7 +19,7 @@ console.log("Loaded supabase.");
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
 export default boot(async ({ app, store, router, redirect }) => {
   // Checking user status and redirect accordingly
-  supabaseClient.auth.onAuthStateChange(async (event, session) => {
+  supabaseClient.auth.onAuthStateChange(async (event, session, error) => {
     console.log(event);
     store.dispatch("auth/setSession", session);
     if (event === "SIGNED_IN") {

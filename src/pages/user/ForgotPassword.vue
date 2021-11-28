@@ -15,7 +15,7 @@ const onSubmit = () => {
         const { error } = await supabase.auth.api.resetPasswordForEmail(
           email.value
         );
-        if (error) throw new Error(error);
+        if (error) throw error;
         store.dispatch(
           "logs/showInfo",
           "An email with a link to reset your password was sent to the specified address"

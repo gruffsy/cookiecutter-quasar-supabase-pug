@@ -12,6 +12,7 @@ export function setError (state, payload) {
   console.error(caption)
   Notify.create({
     type: 'error',
+    position: 'center',
     message: 'An error has occured',
     caption
   })

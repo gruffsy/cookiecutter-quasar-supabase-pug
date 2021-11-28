@@ -1,4 +1,3 @@
-
 <script setup>
 import { computed, ref } from "vue";
 import { supabase } from "src/boot/supabase";
@@ -6,10 +5,9 @@ import { useStore } from "vuex";
 import { useQuasar } from "quasar";
 import { useRoute } from "vue-router";
 
-
 let magicLinkSent = false;
 const store = useStore();
-const route = useRoute()
+const route = useRoute();
 const email = ref("");
 const isPwd = ref(true);
 const password = ref(null);
@@ -25,7 +23,7 @@ const isLoginDisabled = computed(() => {
   return !validateEmail();
 });
 const getAuthTitle = computed(() => {
-   return isRegistration.value ? "Register" : "Login";
+  return isRegistration.value ? "Register" : "Login";
 });
 const getMagicLinkCheckEmailLabel = computed(() => {
   return "Check your email for the login link";
@@ -56,22 +54,28 @@ const onSubmit = () => {
     store.dispatch("loading/setLoading", true);
     try {
       if (isRegistration.value) {
-        const { error } = await supabase.auth.signUp({
+        const { user, session, error } = await supabase.auth.signUp({
           email: email.value,
           password: password.value,
         });
         console.log("success signup" + email.value);
-        if (error) throw new Error(error);
+        console.log("Userconfirmed:" + user.confirmed_at);
+        console.log("Useremail:" + user.email);
+        console.log("Userid:" + user.id);
+        console.log("Session:" + session);
+        if (error) throw error;
       } else {
-        const { error } = await supabase.auth.signIn({
+        const { user, session, error } = await supabase.auth.signIn({
           email: email.value,
           password: password.value,
         });
-        console.log("success sign inn" + email.value);
-        if (error) throw new Error(error);
+        if (error) throw error;
       }
-    } catch (err) {
-      store.dispatch("logs/showError", err);
+    } catch (error) {
+      store.dispatch(
+        "logs/showError",
+        error.error_description || error.message
+      );
       if (!password.value) {
         magicLinkSent = true;
         $q.notify(
@@ -96,7 +100,7 @@ const handleLoginProvider = async (provider) => {
     const { error } = await this.$supabase.auth.signIn({
       provider,
     });
-    if (error) throw new Error(error);
+    if (error) throw error;
   } catch (err) {
     this.showError(err);
   } finally {
@@ -205,7 +209,6 @@ q-page(padding)
       p
         router-link.text-blue(to='forgot-password') I forgot my password
 </template>
-
 
 <style lang="scss" scoped>
 .authentication {

@@ -89,7 +89,7 @@ export default {
           this.isLoading = true
           try {
             const { error } = await this.$supabase.auth.api.updateUser(this.accessToken, { password })
-            if (error) throw new Error(error)
+            if (error) throw error
           } catch (err) {
             this.showError(err)
           } finally {
